@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>ro.mihaistangaciu</groupId>
 	<artifactId>demo-spring-cloud</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>demo-spring-cloud</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -24,6 +24,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-starter-function-webflux</artifactId>-->
+		<!--</dependency>-->
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-function-adapter-aws</artifactId>
