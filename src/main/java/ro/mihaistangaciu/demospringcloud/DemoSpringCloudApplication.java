@@ -6,6 +6,8 @@ import org.springframework.cloud.function.context.FunctionType;
 import org.springframework.cloud.function.context.FunctionalSpringApplication;
 import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.support.GenericApplicationContext;
+import ro.mihaistangaciu.demospringcloud.functions.Weather;
+import ro.mihaistangaciu.demospringcloud.weather.WeatherResponse;
 
 import java.util.function.Function;
 
@@ -16,14 +18,14 @@ public class DemoSpringCloudApplication implements ApplicationContextInitializer
 		FunctionalSpringApplication.run(DemoSpringCloudApplication.class, args);
 	}
 
-	public Function<String, String> reverseString() {
-		return value -> new StringBuilder(value).reverse().toString();
+	public Function<String, WeatherResponse> retrieveWeather() {
+		return value -> new Weather().apply(value);
 	}
 
 	@Override
 	public void initialize(GenericApplicationContext context) {
-		context.registerBean("demo", FunctionRegistration.class,
-				() -> new FunctionRegistration<>(reverseString())
-						.type(FunctionType.from(String.class).to(String.class)));
+		context.registerBean("weather", FunctionRegistration.class,
+				() -> new FunctionRegistration<>(retrieveWeather())
+						.type(FunctionType.from(String.class).to(WeatherResponse.class)));
 	}
 }
